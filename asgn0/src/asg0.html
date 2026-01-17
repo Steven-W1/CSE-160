@@ -1,0 +1,88 @@
+<!-- Steven Ward 
+    stlward@ucsc.edu -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Draw a blue rectangle (canvas version)</title>
+  </head>
+
+  <body onload="main()">
+    <canvas id="example" width="400" height="400">
+      Please use a browser that supports "canvas"
+    </canvas>
+    <script src="../lib/cuon-matrix-cse160.js"></script>
+    <script src="asg0.js"></script>
+    <br><br>
+    <label for="v1">V1: X: </label>
+    <input
+    type="text"
+    id="v1x"
+    name="v1x"
+    required
+    minlength="4"
+    maxlength="8"
+    size="10" />
+    <label for="v1">Y: </label>
+    <input
+    type="text"
+    id="v1y"
+    name="v1y"
+    required
+    minlength="4"
+    maxlength="8"
+    size="10" />
+    <br><br>
+
+
+    
+    <label for="v2">V2: X: </label>
+    <input
+    type="text"
+    id="v2x"
+    name="v2x"
+    required
+    minlength="4"
+    maxlength="8"
+    size="10" />
+    <label for="v2">Y: </label>
+    <input
+    type="text"
+    id="v2y"
+    name="v2y"
+    required
+    minlength="4"
+    maxlength="8"
+    size="10" />
+    <input type="button" value="Draw"onclick="handleDrawEvent()"></input>
+
+    <br><br>
+    <label for="operation">Operation:</label>
+
+    <select name="operation" id="operation">
+      <option value="">--Please choose an option--</option>
+      <option value="add">Add</option>
+      <option value="subtract">Subtract</option>
+      <option value="multiply">Multiply</option>
+      <option value="divide">Divide</option>
+      <option value="normalize">Normalize</option>
+      <option value="magnitude">Magnitude</option>
+      <option value="Angle between">Angle between</option>
+      <option value="Area">Area</option>
+
+    </select>
+    <label for="scalar">Scalar: </label>
+    <input
+    type="text"
+    id="scalar"
+    name="scalar"
+    required
+    minlength="4"
+    maxlength="8"
+    size="10" />
+
+    <input type="button" value="Draw"onclick="handleDrawOperationEvent()"></input>
+
+  </body>
+</html>
