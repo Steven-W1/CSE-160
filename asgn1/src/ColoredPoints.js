@@ -23,6 +23,7 @@ let a_Position;
 let u_FragColor;
 let u_Size;
 let g_selectedSegments = 10;
+let g_selectedRotation = 0;
 function setupWebGL() {
   // Retrieve <canvas> element
   canvas = document.getElementById('webgl');
@@ -91,6 +92,7 @@ function addActionsForHtmlUI(){
 
   document.getElementById('sizeSlide').addEventListener('mouseup', function() { g_selectedSize = this.value; });
   document.getElementById('segmentSlide').addEventListener('mouseup', function() {  g_selectedSegments = this.value; });
+  document.getElementById('rotationSlide').addEventListener('input', function() {  g_selectedRotation = this.value; });
 }
 
 function main() {
@@ -129,6 +131,9 @@ function click(ev) {
     point.segments = g_selectedSegments;
   }
   
+  if (point.type === 'triangle') {
+    point.rotation = g_selectedRotation;
+  }
   g_shapesList.push(point);
   renderAllShapes();
 }
