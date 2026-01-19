@@ -22,6 +22,7 @@ let gl;
 let a_Position;
 let u_FragColor;
 let u_Size;
+let g_selectedSegments = 10;
 function setupWebGL() {
   // Retrieve <canvas> element
   canvas = document.getElementById('webgl');
@@ -89,7 +90,7 @@ function addActionsForHtmlUI(){
   document.getElementById('blueSlide').addEventListener('mouseup', function() { g_selectedColor[2] = this.value / 100; });
 
   document.getElementById('sizeSlide').addEventListener('mouseup', function() { g_selectedSize = this.value; });
-
+  document.getElementById('segmentSlide').addEventListener('mouseup', function() {  g_selectedSegments = this.value; });
 }
 
 function main() {
@@ -124,6 +125,10 @@ function click(ev) {
   point.position = [x, y];
   point.color = g_selectedColor.slice();
   point.size = g_selectedSize;
+    if (point.type === 'circle') {
+    point.segments = g_selectedSegments;
+  }
+  
   g_shapesList.push(point);
   renderAllShapes();
 }
