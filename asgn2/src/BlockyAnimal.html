@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Change a point color</title>
+  </head>
+
+  <body onload="main()">
+    <canvas id="webgl" width="400" height="400">
+    Please use a browser that supports "canvas"
+    </canvas>
+    <p>
+    <p id="numdot"> XXX</p>
+    </p>
+    <button id="resetView">Reset View</button>
+
+    <p>
+      Camera Distance <input type="range" min=".1" max="3" step=".1" value=".1" class="slider" id="distSlide"/>
+    <p>
+      Camera Angle <input type="range" min="-180" max="180" value="0"  step="1" class="slider" id="angleSlide"/>
+    </p>
+<p>
+  <button id="animateAllOnButton">Animate All ON</button>
+  <button id="animateAllOffButton">Animate All OFF</button>
+</p>
+
+<!-- Front Right Leg Manual Controls -->
+<p>
+  Front Right Hip: <input type="range" min="-90" max="90" value="0" id="frontRightHipSlide"/>
+</p>
+<p>
+  Front Right Knee: <input type="range" min="-90" max="90" value="0" id="frontRightKneeSlide"/>
+</p>
+<p>
+  Front Right Ankle: <input type="range" min="-45" max="45" value="0" id="frontRightAnkleSlide"/>
+</p>
+
+<!-- Keep existing individual animation buttons if you want -->
+<p>
+  <button id="animateYellowOnButton">Animate Yellow ON</button>
+  <button id="animateYellowOffButton">Animate Yellow OFF</button>
+</p>
+<p>
+  <button id="animateMagentaOnButton">Animate Magenta ON</button>
+  <button id="animateMagentaOffButton">Animate Magenta OFF</button>
+</p>
+<p>
+  <button id="animateRedOnButton">Animate Red ON</button>
+  <button id="animateRedOffButton">Animate Red OFF</button>
+</p>
+    <p></p>
+    <script src="../lib/webgl-utils.js"></script>
+    <script src="../lib/webgl-debug.js"></script>
+    <script src="../lib/cuon-utils.js"></script>
+    <script src="../lib/cuon-matrix.js"></script>
+    <script src="Points.js"></script>
+    <script src="Triangle.js"></script>
+    <script src="Circle.js"></script>
+    <script src="Cube.js"></script>
+    <script src="Cone.js"></script>
+
+    <script src="BlockyAnimal.js"></script>
+
+  </body>
+</html>
