@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Change a point color</title>
+  </head>
+
+  <body onload="main()">
+    <canvas id="webgl" width="400" height="400">
+    Please use a browser that supports "canvas"
+    </canvas>
+    <p>
+    <p id="numdot"> XXX</p>
+
+    WASD to move, QE to rotate, and hold scroll wheel to free move camera. You can also use the sliders and buttons below to control the animation and lighting.
+<p>
+  <button id="animateAllOnButton">Animate All ON</button>
+  <button id="animateAllOffButton">Animate All OFF</button>
+</p>
+
+<!-- Front Right Leg Manual Controls -->
+<p>
+  Front Right Hip: <input type="range" min="-90" max="90" value="0" id="frontRightHipSlide"/>
+</p>
+<p>
+  Front Right Knee: <input type="range" min="-90" max="90" value="0" id="frontRightKneeSlide"/>
+</p>
+<p>
+  Front Right Ankle: <input type="range" min="-45" max="45" value="0" id="frontRightAnkleSlide"/>
+</p>
+
+<!-- Keep existing individual animation buttons if you want -->
+<p>
+  <button id="animateYellowOnButton">Animate Yellow ON</button>
+  <button id="animateYellowOffButton">Animate Yellow OFF</button>
+</p>
+<p>
+  <button id="animateMagentaOnButton">Animate Magenta ON</button>
+  <button id="animateMagentaOffButton">Animate Magenta OFF</button>
+</p>
+<p>
+  <button id="animateRedOnButton">Animate Red ON</button>
+  <button id="animateRedOffButton">Animate Red OFF</button>
+</p>
+    </p>
+      <button id="normalOn">Normal ON</button>
+      <button id="normalOff">Normal OFF</button>
+      </p>
+      <button id="lightOn">Light ON</button>
+      <button id="lightOff">Light OFF</button>
+      </p>
+      <button id="spotlightOn">Spotlight ON</button>
+      <button id="spotlightOff">Spotlight OFF</button>
+
+    <p>
+      Orbit: <input type="range" id="orbitSlider" min="0" max="360" value="0" style="width:200px">
+    </p>
+      Light X: <input type="range" id="lightXSlider" min="-250" max="250" value="0" class ="slider" style="width:200px">
+      Light Y: <input type="range" id="lightYSlider" min="-250" max="250" value="100" class ="slider" style="width:200px">
+      Light Z: <input type="range" id="lightZSlider" min="-250" max="250" value="200" class ="slider" style="width:200px">
+    <p>
+      Note: The spotlight is fixed pointed downwards, and the inner angle must be less than the outer angler.
+    </p>
+      Spotlight Inner Angle: <input type="range" id="innerAngleSlider" min="1" max="89" value="15" style="width:200px"> <span id="innerAngleVal">15°</span>
+    </p>
+    <p>
+      Spotlight Outer Angle: <input type="range" id="outerAngleSlider" min="1" max="90" value="20" style="width:200px"> <span id="outerAngleVal">20°</span>
+    </p>
+    <p></p>
+    <p> </p>
+    <script src="../lib/webgl-utils.js"></script>
+    <script src="../lib/webgl-debug.js"></script>
+    <script src="../lib/cuon-utils.js"></script>
+    <script src="../lib/cuon-matrix.js"></script>
+    <script src="Camera.js"></script>
+    <script src="Vector.js"></script>
+    <script src="Points.js"></script>
+    <script src="Triangle.js"></script>
+    <script src="Circle.js"></script>
+    <script src="Cube.js"></script>
+    <script src="Cone.js"></script>
+    <script src="Sphere.js"></script>
+    <script src="Model.js"></script>
+    <script src="Lighting.js"></script>
+
+  </body>
+</html>
