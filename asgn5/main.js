@@ -240,24 +240,23 @@ function main() {
   }
 
   // Left side buildings
-  addBuilding(10, 45, 12, -17, -60,  0.00); // #13
-  addBuilding(12, 30, 10, -18, -30,  0.04); // #14
-  addBuilding(8,  60, 10, -15,   0,  0.02); // #15 — tallest building (landmark)
-  addBuilding(11, 38, 12, -18,  30,  0.06); // #16
-  addBuilding(10, 25, 10, -16,  60, -0.02); // #17
+  addBuilding(10, 45, 12, -17, -60,  0.00); 
+  addBuilding(12, 30, 10, -18, -30,  0.04); 
+  addBuilding(8,  60, 10, -15,   0,  0.02); 
+  addBuilding(11, 38, 12, -18,  30,  0.06); 
+  addBuilding(10, 25, 10, -16,  60, -0.02); 
 
   // Right side buildings
-  addBuilding(10, 50, 11,  17, -45,  0.03); // #18
-  addBuilding(12, 35, 10,  18, -15,  0.01); // #19
-  addBuilding(9,  55, 12,  16,  15,  0.05); // #20 — second tallest
-  addBuilding(11, 28, 10,  18,  45, -0.01); // #21
-  addBuilding(10, 42, 11,  17,  75,  0.04); // #22
+  addBuilding(10, 50, 11,  17, -45,  0.03); 
+  addBuilding(12, 35, 10,  18, -15,  0.01); 
+  addBuilding(9,  55, 12,  16,  15,  0.05); 
+  addBuilding(11, 28, 10,  18,  45, -0.01); 
+  addBuilding(10, 42, 11,  17,  75,  0.04); 
+ 
 
-  // Rooftop spires — addCone(radius, height, material, x, y, z)
-
-  const spireMat = mat(0x556677, { metalness: 0.6, roughness: 0.3 }); // steel-blue metal
-  addCone(1.2, 12, spireMat, -15, 60,  0);  // spire on building #15 (y=60 = its roof height)
-  addCone(1.0, 10, spireMat,  16, 55, 15);  // spire on building #20 (y=55 = its roof height)
+  const spireMat = mat(0x556677, { metalness: 0.6, roughness: 0.3 });
+  addCone(1.2, 12, spireMat, -15, 60,  0);
+  addCone(1.0, 10, spireMat,  16, 55, 15); 
 
 
   const poleMat = mat(0x333344); // dark grey steel
@@ -267,39 +266,39 @@ function main() {
   const lampZ = [-50, -25, 0, 25, 50]; // z positions for lamp posts
 
   lampZ.forEach((z) => {
-    [-9, 9].forEach((x) => { // left (−9) and right (+9) sidewalk edges
-      addCylinder(0.12, 0.15, 9, poleMat, x, 0, z);       // pole — slightly tapered
-      addBox(0.8, 0.4, 0.8, lampHeadMat, x, 9, z);        // lamp head box at pole top
+    [-9, 9].forEach((x) => { 
+      addCylinder(0.12, 0.15, 9, poleMat, x, 0, z);       
+      addBox(0.8, 0.4, 0.8, lampHeadMat, x, 9, z);      
 
       const pl = new THREE.PointLight(0xffcc77, 0, 20);
       pl.position.set(x, 9.5, z);
       scene.add(pl);
-      lampLights.push(pl); // stored for day/night cycle control
+      lampLights.push(pl); 
     });
   });
 
-  const trunkMat   = mat(0x3d2010); // dark brown trunk
-  const leafMat    = mat(0x2a5c1a); // forest green (shared by both types)
-  const pineLeafMat = mat(0x1a4a10); // darker green for pine cones
+  const trunkMat   = mat(0x3d2010); 
+  const leafMat    = mat(0x2a5c1a); 
+  const pineLeafMat = mat(0x1a4a10);
 
-  // Each entry: [z position, canopy type]
+
   const treeDefs = [
-    { z: -37, type: 'sphere' }, // deciduous
-    { z: -12, type: 'cone'   }, // pine
+    { z: -37, type: 'sphere' }, 
+    { z: -12, type: 'cone'   }, 
     { z:  12, type: 'sphere' }, // deciduous
     { z:  37, type: 'cone'   }, // pine
   ];
 
   treeDefs.forEach(({ z, type }) => {
     [-9, 9].forEach((x) => {
-      addCylinder(0.2, 0.3, 4, trunkMat, x, 0, z); // trunk: slightly wider at base
+      addCylinder(0.2, 0.3, 4, trunkMat, x, 0, z); 
 
       if (type === 'sphere') {
         addSphere(1.8, leafMat, x, 5.5, z);
       } else {
 
-        addCone(2.0, 4.5, pineLeafMat, x, 3.5, z); // lower, wide base
-        addCone(1.3, 3.5, pineLeafMat, x, 6.0, z); // upper, narrower tip
+        addCone(2.0, 4.5, pineLeafMat, x, 3.5, z); 
+        addCone(1.3, 3.5, pineLeafMat, x, 6.0, z); 
       }
     });
   });
@@ -335,7 +334,7 @@ function main() {
         new THREE.CylinderGeometry(0.35, 0.35, 0.3, 12),
         wheelMat
       );
-      wheel.rotation.z = Math.PI / 2; // tip the cylinder on its side
+      wheel.rotation.z = Math.PI / 2; 
       wheel.position.set(dx * 1.2, 0.35, dz);
       wheel.castShadow = true;
       group.add(wheel);
@@ -405,16 +404,16 @@ function main() {
   let lastTime = 0;
 
   function render(time) {
-    time *= 0.001; // ms → seconds
+    time *= 0.001;
     const dt = time - lastTime;
     lastTime = time;
 
-    sunAngle += dt * 0.06; // full orbit ≈ 105 seconds
+    sunAngle += dt * 0.06; 
 
     sunLight.position.set(
-      Math.cos(sunAngle) * 80,  // X: sweeps left and right
-      Math.sin(sunAngle) * 80,  // Y: rises and sets
-      40                         // Z: slight offset so shadows fall at an angle
+      Math.cos(sunAngle) * 80,  
+      Math.sin(sunAngle) * 80,  
+      40                         
     );
 
     const dayFactor = Math.max(0, Math.sin(sunAngle));
@@ -443,7 +442,7 @@ function main() {
       currentSkyIsDay = wantDay;
     }
 
-    const CAR_SPEED = 15; // units per second — increase to drive faster
+    const CAR_SPEED = 15;
     carARef.position.z += CAR_SPEED * dt;
     if (carARef.position.z > STREET_END) {
       carARef.position.z = STREET_START;
@@ -454,12 +453,12 @@ function main() {
       carBRef.position.z = STREET_END;
     }
 
-    controls.update();             // OrbitControls requires an update call every frame
-    renderer.render(scene, camera); // draw all scene objects to the canvas
-    requestAnimationFrame(render);  // schedule this function to run again next frame
+    controls.update();            
+    renderer.render(scene, camera); 
+    requestAnimationFrame(render); 
   }
 
-  requestAnimationFrame(render); // kick off the loop
+  requestAnimationFrame(render); 
 }
 
 main();
